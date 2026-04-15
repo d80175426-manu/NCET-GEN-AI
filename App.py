@@ -6,10 +6,9 @@ st.title("Manx_AI - Content Generator")
 st.image("Manx.jpg")
 
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
-# Get Product Name and Audience for That Product
+
 product = st.text_input("Product")
 audience = st.text_input("Audience")
-# Button to Generate Content
 if st.button("Generate Content"):
     prompt = f"Write marketing content for {product} targeting {audience}."
     response = client.chat.completions.create(
@@ -19,7 +18,6 @@ if st.button("Generate Content"):
     st.session_state.text = response.choices[0].message.content
     text =response.choices[0].message.content
     st.write(text)
-# After Content Create - Download The File
 if "text" in st.session_state:
     content = st.text_area("Generated Content", st.session_state.text, height=300)
     st.download_button(

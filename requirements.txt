@@ -1,4 +1,4 @@
 streamlit
 groq
-googlele-auth-oauthlib
+google-auth-oauthlib
 google-api-python-client
